@@ -1,19 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
+import Context from '../context/context'
 import Navigation from './Navigation'
+import { addJob } from '../actions/jobs'
 
 const NewJobPage = () => {
+  const { uid, state, dispatch } = useContext(Context)
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
 
-  useEffect(() => console.log(customer, description))
+  const handleFormSubmit = e => {
+    e.preventDefault()
+    addJob({ customer, description })(dispatch)(uid)
+  }
+
+  useEffect(() => console.log(state), [state])
 
   return (
     <>
       <Navigation />
       <Container>
         <h1>New Job</h1>
-        <Form>
+        <Form onSubmit={ handleFormSubmit }>
           <Form.Group controlId="customer">
             <Form.Label>Customer</Form.Label>
             <Form.Control
