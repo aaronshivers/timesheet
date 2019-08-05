@@ -23,6 +23,28 @@ const addJob = jobData => dispatch => ({ uid }) => {
     )
 }
 
+const getJobs = () => dispatch => uid => {
+
+  return database
+    .ref(`users/${ uid }/jobs`)
+    .once('value')
+    .then(snapshot => {
+      const jobs = []
+
+      snapshot.forEach(childSnapshot => {
+        jobs.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        })
+      })
+
+      return jobs
+    }).then(
+      jobs => dispatch({ type: 'POPULATE_JOBS', jobs })
+    )
+}
+
 export {
   addJob,
+  getJobs
 }
