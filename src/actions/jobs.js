@@ -23,7 +23,7 @@ const addJob = jobData => dispatch => ({ uid }) => {
     )
 }
 
-const getJobs = () => dispatch => uid => {
+const getJobs = () => dispatch => ({ uid }) => {
 
   return database
     .ref(`users/${ uid }/jobs`)
@@ -44,7 +44,15 @@ const getJobs = () => dispatch => uid => {
     )
 }
 
+const deleteJob = id => dispatch => ({ uid }) => {
+  return database
+    .ref(`users/${ uid }/jobs/${ id }`)
+    .remove()
+    .then(() => dispatch({ type: 'DELETE_JOB', id }))
+}
+
 export {
   addJob,
-  getJobs
+  getJobs,
+  deleteJob
 }
