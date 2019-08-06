@@ -3,15 +3,22 @@ import { Button } from 'react-bootstrap'
 import Context from '../context/context'
 import { deleteJob } from '../actions/jobs'
 
-const DeleteButton = ({ id }) => {
+const DeleteButton = ({ id, history }) => {
   const { uid, dispatch } = useContext(Context)
+
+  const handleDeleteJob = () => {
+    deleteJob(id)(dispatch)(uid)
+
+    history.push('/')
+  }
 
   return (
     <Button
       variant="danger"
-      onClick={ () => deleteJob(id)(dispatch)(uid) }
+      size="lg"
+      onClick={ handleDeleteJob }
     >
-      X
+      Delete Job
     </Button>
   )
 }

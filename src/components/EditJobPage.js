@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
 import Context from '../context/context'
-import Navigation from './Navigation'
 import { getJobs, updateJob } from '../actions/jobs'
+import Navigation from './Navigation'
+import DeleteButton from './DeleteButton'
 
 const EditJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
@@ -35,7 +36,7 @@ const EditJobPage = ({ history }) => {
       <Navigation />
       <Container>
         <h1>Edit Job</h1>
-        <Form onSubmit={ handleFormSubmit }>
+        <Form onSubmit={ handleFormSubmit }  className="mb-3">
           <Form.Group controlId="customer">
             <Form.Label>Customer</Form.Label>
             <Form.Control
@@ -63,6 +64,7 @@ const EditJobPage = ({ history }) => {
             Update Job
           </Button>
         </Form>
+        <DeleteButton id={ id } history={ history } />
       </Container>
     </>
   )
