@@ -8,7 +8,7 @@ const Navigation = () =>{
   const { uid } = useContext(Context)
 
   return (
-    <Navbar>
+    <Navbar bg="light" variant="light" className="mb-3">
         <Navbar.Brand className="mr-auto">
           <Link to="/">
             <h3>
