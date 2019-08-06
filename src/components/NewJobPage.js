@@ -4,7 +4,7 @@ import Context from '../context/context'
 import Navigation from './Navigation'
 import { addJob } from '../actions/jobs'
 
-const NewJobPage = () => {
+const NewJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
@@ -12,6 +12,8 @@ const NewJobPage = () => {
   const handleFormSubmit = e => {
     e.preventDefault()
     addJob({ customer, description })(dispatch)(uid)
+
+    history.push('/')
   }
 
   return (

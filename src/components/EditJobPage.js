@@ -4,7 +4,7 @@ import Context from '../context/context'
 import Navigation from './Navigation'
 import { getJobs, updateJob } from '../actions/jobs'
 
-const EditJobPage = () => {
+const EditJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
   const [ id, setID ] = useState('')
   const [ customer, setCustomer ] = useState('')
@@ -13,6 +13,8 @@ const EditJobPage = () => {
   const handleFormSubmit = e => {
     e.preventDefault()
     updateJob(id, { customer, description })(dispatch)(uid)
+    
+    history.push('/')
   }
 
   // Populate jobs on page load
