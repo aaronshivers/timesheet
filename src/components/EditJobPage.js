@@ -6,12 +6,13 @@ import { getJobs, updateJob } from '../actions/jobs'
 
 const EditJobPage = () => {
   const { uid, state, dispatch } = useContext(Context)
+  const [ id, setID ] = useState('')
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
 
   const handleFormSubmit = e => {
     e.preventDefault()
-    updateJob({ customer, description })(dispatch)(uid)
+    updateJob(id, { customer, description })(dispatch)(uid)
   }
 
   // Populate jobs on page load
@@ -20,13 +21,12 @@ const EditJobPage = () => {
   }, [])
 
   useEffect(() => {
-    // console.log(state[0])
-    // setCustomer(state[0].customer)
-    for (const prop in state[0]) {
-      console.log(state[0]['customer'])
+    if (state[0]) {
+      setID(state[0].id)
+      setCustomer(state[0].customer)
+      setDescription(state[0].description)
     }
-    // console.log(state[0].map(el => console.log(el)))
-  }, [state])
+  }, [state[0]])
 
   return (
     <>

@@ -51,8 +51,16 @@ const deleteJob = id => dispatch => ({ uid }) => {
     .then(() => dispatch({ type: 'DELETE_JOB', id }))
 }
 
+const updateJob = (id, job) => dispatch => ({ uid }) => {
+  return database
+    .ref(`users/${ uid }/jobs/${ id }`)
+    .update(job)
+    .then(() => dispatch({ type: 'UPDATE_JOB', id, job }))
+}
+
 export {
   addJob,
   getJobs,
-  deleteJob
+  deleteJob,
+  updateJob
 }
