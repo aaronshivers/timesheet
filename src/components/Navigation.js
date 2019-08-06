@@ -8,10 +8,10 @@ const Navigation = () =>{
   const { uid } = useContext(Context)
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="primary" variant="primary">
         <Navbar.Brand className="mr-auto">
           <Link to="/" className="text-decoration-none">
-            <h3 className="text-light">
+            <h3 className="text-white">
               Timesheet
             </h3>
           </Link>

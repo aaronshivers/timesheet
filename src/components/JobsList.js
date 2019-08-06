@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardHeader, ListGroup } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 import Context from '../context/context'
 import DeleteButton from './DeleteButton'
 import { getJobs } from '../actions/jobs'

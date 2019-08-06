@@ -1,20 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
+import TimePicker from 'rc-time-picker'
+import moment from 'moment'
 import Context from '../context/context'
 import Navigation from './Navigation'
 import { addJob } from '../actions/jobs'
+import 'rc-time-picker/assets/index.css'
 
 const NewJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
+  const [ timeIn, setTimeIn ] = useState('')
 
   const handleFormSubmit = e => {
     e.preventDefault()
-    addJob({ customer, description })(dispatch)(uid)
+    addJob({ customer, description, timeIn })(dispatch)(uid)
 
     history.push('/')
   }
+
+  const handleTimeInChange = value => {
+    setTimeIn(value.toISOString())
+  }
+
+  useEffect(() => console.log(timeIn), [timeIn])
 
   return (
     <>
@@ -46,6 +56,16 @@ const NewJobPage = ({ history }) => {
               onChange={ e => setDescription(e.target.value) }
             >
             </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="timeIn">
+            <Form.Label>Time In</Form.Label>
+            <TimePicker
+              style={{ width: 100 }}
+              showSecond={ false }
+              defaultValue={ moment() }
+              className="xxx"
+              onChange={ handleTimeInChange }
+            />
           </Form.Group>
           <Button
             type="submit"

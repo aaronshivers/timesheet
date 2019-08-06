@@ -34,8 +34,13 @@ const EditJobPage = ({ history }) => {
   return (
     <>
       <Navigation />
-      <Container>
-        <h1>Edit Job</h1>
+      <div className="bg-light pt-3 pb-3">
+        <Container>
+          <h1>Edit Job</h1>
+        </Container>
+      </div>
+
+      <Container className="mt-3">
         <Form onSubmit={ handleFormSubmit }  className="mb-3">
           <Form.Group controlId="customer">
             <Form.Label>Customer</Form.Label>

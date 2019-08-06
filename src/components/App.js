@@ -11,13 +11,19 @@ const App = () => {
   return (
     <>
       <Navigation />
+
+      <div className="bg-light pt-3 pb-3">
+        <Container>
+          <Link
+            to="/newjob"
+            className="btn btn-primary btn-lg"
+          >
+            New Job
+          </Link>
+        </Container>
+      </div>
+
       <Container>
-        <Link
-          to="/newjob"
-          className="btn btn-primary btn-lg"
-        >
-          New Job
-        </Link>
         <JobsList />
       </Container>
     </>
