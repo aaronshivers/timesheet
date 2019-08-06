@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react'
-import { Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Table, Button } from 'react-bootstrap'
 import Context from '../context/context'
 import DeleteButton from './DeleteButton'
 import { getJobs } from '../actions/jobs'
@@ -28,7 +29,9 @@ const JobsList = () => {
               <td className="text-break align-middle">{ customer }</td>
               <td className="text-break align-middle">{ description }</td>
               <td>
-                <DeleteButton id={ id } />
+                <Button href={ `/editjob/${ id }` }>
+                  Edit Job
+                </Button>
               </td>
             </tr>
           ))
