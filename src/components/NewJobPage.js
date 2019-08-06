@@ -21,7 +21,7 @@ const NewJobPage = ({ history }) => {
   }
 
   const handleTimeInChange = value => {
-    setTimeIn(value.toISOString())
+    setTimeIn(value && value.toISOString())
   }
 
   useEffect(() => console.log(timeIn), [timeIn])
@@ -59,12 +59,13 @@ const NewJobPage = ({ history }) => {
           </Form.Group>
           <Form.Group controlId="timeIn">
             <Form.Label>Time In</Form.Label>
+            <br />
             <TimePicker
-              style={{ width: 100 }}
               showSecond={ false }
+              minuteStep={ 15 }
               defaultValue={ moment() }
-              className="xxx"
               onChange={ handleTimeInChange }
+              use12Hours
             />
           </Form.Group>
           <Button
