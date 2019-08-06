@@ -1,12 +1,13 @@
 import database from '../db/firebase'
 
-const addJob = jobData => dispatch => ({ uid }) => {
-  const { customer, description, timeIn } = jobData
+const addJob = (jobData = {}) => dispatch => ({ uid }) => {
+  const { customer, description, timeIn, timeOut } = jobData
 
   const job = {
     customer,
     description,
-    timeIn,
+    timeIn: timeIn.toISOString(),
+    timeOut: timeOut.toISOString(),
     createdAt: Date.now()
   }
 

@@ -11,20 +11,23 @@ const NewJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
-  const [ timeIn, setTimeIn ] = useState('')
+  const [ timeIn, setTimeIn ] = useState(moment())
+  const [ timeOut, setTimeOut ] = useState(moment().add(1, 'hour'))
 
   const handleFormSubmit = e => {
     e.preventDefault()
-    addJob({ customer, description, timeIn })(dispatch)(uid)
+    addJob({ customer, description, timeIn, timeOut })(dispatch)(uid)
 
     history.push('/')
   }
 
   const handleTimeInChange = value => {
-    setTimeIn(value && value.toISOString())
+    setTimeIn(value)
   }
 
-  useEffect(() => console.log(timeIn), [timeIn])
+  const handleTimeOutChange = value => {
+    setTimeOut(value)
+  }
 
   return (
     <>
@@ -63,14 +66,26 @@ const NewJobPage = ({ history }) => {
             <TimePicker
               showSecond={ false }
               minuteStep={ 15 }
-              defaultValue={ moment() }
+              defaultValue={ timeIn }
               onChange={ handleTimeInChange }
+              use12Hours
+            />
+          </Form.Group>
+          <Form.Group controlId="timeIn">
+            <Form.Label>Time Out</Form.Label>
+            <br />
+            <TimePicker
+              showSecond={ false }
+              minuteStep={ 15 }
+              defaultValue={ timeOut }
+              onChange={ handleTimeOutChange }
               use12Hours
             />
           </Form.Group>
           <Button
             type="submit"
             size="lg"
+            className="mt-1"
           >
             Add Job
           </Button>
