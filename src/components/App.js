@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Button } from 'react-bootstrap'
 import Context from '../context/context'
 import Navigation from './Navigation'
@@ -11,7 +12,12 @@ const App = () => {
     <>
       <Navigation />
       <Container>
-        <Button href="/newjob">New Job</Button>
+        <Link
+          to="/newjob"
+          className="btn btn-primary btn-lg"
+        >
+          New Job
+        </Link>
         <JobsList />
       </Container>
     </>
