@@ -14,8 +14,6 @@ const NewJobPage = () => {
     addJob({ customer, description })(dispatch)(uid)
   }
 
-  useEffect(() => console.log(state), [state])
-
   return (
     <>
       <Navigation />
