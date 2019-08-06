@@ -12,7 +12,7 @@ const LoginLogoutButton = uid => {
   return (
     <Button
       size="lg"
-      variant={ loggedIn ? "outline-primary" : "primary" }
+      variant={ loggedIn ? "outline-light" : "primary" }
       onClick={ loggedIn ? logout : login }
     >
       {
