@@ -26,7 +26,10 @@ input.rc-time-picker-input {
 
 .rc-time-picker-panel-select li {
   font-size: 1rem;
-  // line-height: 1.5;
+  line-height: 2.5;
   // margin: 16px;
   color: $dark;
+  height: 100%;
+  width: 100%;
+  padding: 0px 18px;
 }
