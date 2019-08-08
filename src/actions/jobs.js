@@ -1,3 +1,4 @@
+import moment from 'moment'
 import database from '../db/firebase'
 
 const addJob = (jobData = {}) => dispatch => ({ uid }) => {
@@ -6,8 +7,8 @@ const addJob = (jobData = {}) => dispatch => ({ uid }) => {
   const job = {
     customer,
     description,
-    timeIn: timeIn.toISOString(),
-    timeOut: timeOut.toISOString(),
+    timeIn: moment(timeIn).format(),
+    timeOut: moment(timeOut).format(),
     createdAt: Date.now()
   }
 
@@ -53,6 +54,9 @@ const deleteJob = id => dispatch => ({ uid }) => {
 }
 
 const updateJob = (id, job) => dispatch => ({ uid }) => {
+  
+  console.log(job)
+
   return database
     .ref(`users/${ uid }/jobs/${ id }`)
     .update(job)

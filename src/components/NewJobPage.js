@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
-import TimePicker from 'rc-time-picker'
+import Datetime from 'react-datetime'
 import moment from 'moment'
 import Context from '../context/context'
 import Navigation from './Navigation'
 import { addJob } from '../actions/jobs'
-import 'rc-time-picker/assets/index.css'
 
 const NewJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
@@ -19,14 +18,6 @@ const NewJobPage = ({ history }) => {
     addJob({ customer, description, timeIn, timeOut })(dispatch)(uid)
 
     history.push('/')
-  }
-
-  const handleTimeInChange = value => {
-    setTimeIn(value)
-  }
-
-  const handleTimeOutChange = value => {
-    setTimeOut(value)
   }
 
   return (
@@ -63,23 +54,17 @@ const NewJobPage = ({ history }) => {
           <Form.Group controlId="timeIn">
             <Form.Label>Time In</Form.Label>
             <br />
-            <TimePicker
-              showSecond={ false }
-              minuteStep={ 15 }
-              defaultValue={ timeIn }
-              onChange={ handleTimeInChange }
-              use12Hours
+            <Datetime
+              value={ timeIn }
+              onChange={ time => setTimeIn(time) }
             />
           </Form.Group>
           <Form.Group controlId="timeIn">
             <Form.Label>Time Out</Form.Label>
             <br />
-            <TimePicker
-              showSecond={ false }
-              minuteStep={ 15 }
-              defaultValue={ timeOut }
-              onChange={ handleTimeOutChange }
-              use12Hours
+            <Datetime
+              value={ timeOut }
+              onChange={ time => setTimeOut(time) }
             />
           </Form.Group>
           <Button
