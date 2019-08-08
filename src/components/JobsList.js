@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card, ListGroup } from 'react-bootstrap'
 import Context from '../context/context'
 import DeleteButton from './DeleteButton'
+import ListGroupItem from './ListGroupItem'
 import { getJobs } from '../actions/jobs'
 
 const JobsList = () => {
@@ -18,22 +19,13 @@ const JobsList = () => {
       <Card.Header>Jobs</Card.Header>
       <ListGroup variant="flush">
         {
-          state && state.map(({ id, customer, description, hoursWorked }) => (
-            <ListGroup.Item key={ id }>
-              <Link
-                to={ {
-                  pathname: `/editjob/${ id }`,
-                  state: { id }
-                } }
-              >
-                <h5>Customer: { customer }</h5>
-                <h6>Job Description: { description }</h6>
-                <span className="text-break align-middle">
-                  Hours Worked: { hoursWorked }
-                </span>
-              </Link>
-            </ListGroup.Item>
-          ))
+          state && state.map(
+            ({ id, ...job }) => {
+              return (
+                <ListGroupItem key={ id } id={ id } job={ job } />
+              )
+            }
+          )
         }
       </ListGroup>
     </Card>
