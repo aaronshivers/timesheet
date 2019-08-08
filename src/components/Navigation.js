@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Container, Navbar, Nav } from 'react-bootstrap'
 import Context from '../context/context'
 import LoginLogoutButton from './LoginLogoutButton'
 
@@ -9,6 +9,7 @@ const Navigation = () =>{
 
   return (
     <Navbar bg="primary" variant="primary">
+      <Container className="pl-3 pr-3">
         <Navbar.Brand className="mr-auto">
           <Link to="/" className="text-decoration-none">
             <h3 className="text-white">
@@ -16,7 +17,8 @@ const Navigation = () =>{
             </h3>
           </Link>
         </Navbar.Brand>
-      <LoginLogoutButton uid={ uid } />
+        <LoginLogoutButton uid={ uid } />
+      </Container>
     </Navbar>
   )
 }
