@@ -14,6 +14,7 @@ const EditJobPage = ({ history }) => {
   const [ description, setDescription ] = useState('')
   const [ timeIn, setTimeIn ] = useState('')
   const [ timeOut, setTimeOut ] = useState('')
+  const [ hoursWorked, setHoursWorked ] = useState('')
 
   const handleFormSubmit = e => {
     e.preventDefault()
@@ -22,8 +23,9 @@ const EditJobPage = ({ history }) => {
       {
         customer,
         description,
-        timeIn,
-        timeOut
+        timeIn: moment(timeIn).format(),
+        timeOut: moment(timeOut).format(),
+        hoursWorked
       }
     )(dispatch)(uid)
     
@@ -42,10 +44,14 @@ const EditJobPage = ({ history }) => {
       setDescription(state[0].description)
       setTimeIn(moment(state[0].timeIn))
       setTimeOut(moment(state[0].timeOut))
+      setHoursWorked((state[0].hoursWorked))
     }
   }, [state[0]])
 
-  const hoursWorked = ((timeOut - timeIn) / 1000 / 60 / 60).toFixed(2)
+  useEffect(() => {
+    setHoursWorked(((timeOut - timeIn) / 1000 / 60 / 60).toFixed(2))
+
+  }, [timeIn, timeOut])
 
   return (
     <>

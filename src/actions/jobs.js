@@ -2,13 +2,14 @@ import moment from 'moment'
 import database from '../db/firebase'
 
 const addJob = (jobData = {}) => dispatch => ({ uid }) => {
-  const { customer, description, timeIn, timeOut } = jobData
+  const { customer, description, timeIn, timeOut, hoursWorked } = jobData
 
   const job = {
     customer,
     description,
-    timeIn: moment(timeIn).format(),
-    timeOut: moment(timeOut).format(),
+    timeIn,
+    timeOut,
+    hoursWorked,
     createdAt: Date.now()
   }
 
