@@ -19,13 +19,9 @@ const JobsList = () => {
       <Card.Header>Jobs</Card.Header>
       <ListGroup variant="flush">
         {
-          state && state.map(
-            ({ id, ...job }) => {
-              return (
-                <ListGroupItem key={ id } id={ id } job={ job } />
-              )
-            }
-          )
+          state && state.map(job => (
+            <ListGroupItem key={ job.id } { ...job } />
+          ))
         }
       </ListGroup>
     </Card>
