@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { Card, ListGroup } from 'react-bootstrap'
+import { Container, Card, ListGroup } from 'react-bootstrap'
 import Context from '../context/context'
 import ListGroupItem from './ListGroupItem'
 import { getJobs } from '../actions/jobs'
@@ -13,16 +13,18 @@ const JobsList = () => {
   }, [])
 
   return (
-    <Card className="mt-3">
-      <Card.Header>Jobs</Card.Header>
-      <ListGroup variant="flush">
-        {
-          state && state.map(job => (
-            <ListGroupItem key={ job.id } { ...job } />
-          ))
-        }
-      </ListGroup>
-    </Card>
+    <Container className="mb-3">
+      <Card className="mt-3">
+        <Card.Header>Jobs</Card.Header>
+        <ListGroup variant="flush">
+          {
+            state && state.map(job => (
+              <ListGroupItem key={ job.id } { ...job } />
+            ))
+          }
+        </ListGroup>
+      </Card>
+    </Container>
   )
 }
 
