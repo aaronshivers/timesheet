@@ -20,12 +20,16 @@ const NewJobPage = ({ history }) => {
     history.push('/')
   }
 
+  const hoursWorked = ((timeOut - timeIn) / 1000 / 60 / 60).toFixed(2)
+
+
   return (
     <>
       <Navigation />
       <div className="bg-light pt-3 pb-3">
         <Container>
           <h1>New Job</h1>
+          <span>Hours Worked: { hoursWorked }</span>
         </Container>
       </div>
 

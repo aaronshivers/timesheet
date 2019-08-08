@@ -45,12 +45,15 @@ const EditJobPage = ({ history }) => {
     }
   }, [state[0]])
 
+  const hoursWorked = ((timeOut - timeIn) / 1000 / 60 / 60).toFixed(2)
+
   return (
     <>
       <Navigation />
       <div className="bg-light pt-3 pb-3">
         <Container>
           <h1>Edit Job</h1>
+          <span>Hours Worked: { hoursWorked }</span>
         </Container>
       </div>
 
