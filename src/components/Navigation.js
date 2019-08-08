@@ -9,7 +9,7 @@ const Navigation = () =>{
 
   return (
     <Navbar bg="primary" variant="primary">
-      <Container className="pl-3 pr-3">
+      <Container>
         <Navbar.Brand className="mr-auto">
           <Link to="/" className="text-decoration-none">
             <h3 className="text-white">
