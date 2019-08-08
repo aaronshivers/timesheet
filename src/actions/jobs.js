@@ -26,6 +26,19 @@ const addJob = (jobData = {}) => dispatch => ({ uid }) => {
     )
 }
 
+const getJob = id => ({ uid }) => {
+
+  return database
+    .ref(`users/${ uid }/jobs/${ id }`)
+    .once('value')
+    .then(snapshot => {
+      return {
+        id,
+        ...snapshot.val()
+      }
+    })
+}
+
 const getJobs = () => dispatch => ({ uid }) => {
 
   return database
@@ -55,8 +68,6 @@ const deleteJob = id => dispatch => ({ uid }) => {
 }
 
 const updateJob = (id, job) => dispatch => ({ uid }) => {
-  
-  console.log(job)
 
   return database
     .ref(`users/${ uid }/jobs/${ id }`)
@@ -66,6 +77,7 @@ const updateJob = (id, job) => dispatch => ({ uid }) => {
 
 export {
   addJob,
+  getJob,
   getJobs,
   deleteJob,
   updateJob

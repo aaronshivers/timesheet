@@ -3,12 +3,13 @@ import { Container, Form, Button } from 'react-bootstrap'
 import Datetime from 'react-datetime'
 import moment from 'moment'
 import Context from '../context/context'
-import { getJobs, updateJob } from '../actions/jobs'
+import { getJob, updateJob } from '../actions/jobs'
 import Navigation from './Navigation'
 import DeleteButton from './DeleteButton'
 
 const EditJobPage = ({ history }) => {
   const { uid, state, dispatch } = useContext(Context)
+  const [ job, setJob ] = useState({})
   const [ id, setID ] = useState('')
   const [ customer, setCustomer ] = useState('')
   const [ description, setDescription ] = useState('')
@@ -18,6 +19,7 @@ const EditJobPage = ({ history }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault()
+
     updateJob(
       id,
       {
@@ -34,19 +36,17 @@ const EditJobPage = ({ history }) => {
 
   // Populate jobs on page load
   useEffect(() => {
-    getJobs()(dispatch)(uid)
-  }, [])
 
-  useEffect(() => {
-    if (state[0]) {
-      setID(state[0].id)
-      setCustomer(state[0].customer)
-      setDescription(state[0].description)
-      setTimeIn(moment(state[0].timeIn))
-      setTimeOut(moment(state[0].timeOut))
-      setHoursWorked((state[0].hoursWorked))
-    }
-  }, [state[0]])
+    getJob(history.location.state.id)(uid)
+      .then(({ id, customer, description, timeIn, timeOut, hoursWorked }) => {
+        setID(id)
+        setCustomer(customer)
+        setDescription(description)
+        setTimeIn(moment(timeIn))
+        setTimeOut(moment(timeOut))
+        setHoursWorked((hoursWorked))
+      })
+  }, [])
 
   useEffect(() => {
     setHoursWorked(((timeOut - timeIn) / 1000 / 60 / 60).toFixed(2))

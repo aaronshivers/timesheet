@@ -20,7 +20,12 @@ const JobsList = () => {
         {
           state && state.map(({ id, customer, description, hoursWorked }) => (
             <ListGroup.Item key={ id }>
-              <Link to={ `/editjob/${ id }` }>
+              <Link
+                to={ {
+                  pathname: `/editjob/${ id }`,
+                  state: { id }
+                } }
+              >
                 <h5>Customer: { customer }</h5>
                 <h6>Job Description: { description }</h6>
                 <span className="text-break align-middle">
