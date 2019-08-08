@@ -43,7 +43,7 @@ const NewJobPage = ({ history }) => {
         </Container>
       </div>
 
-      <Container className="mt-3">
+      <Container className="mt-3 mb-3">
         <Form onSubmit={ handleFormSubmit }>
           <Form.Group controlId="customer">
             <Form.Label>Customer</Form.Label>

@@ -39,7 +39,7 @@ const App = () => {
         </Container>
       </div>
 
-      <Container>
+      <Container className="mb-3">
         <JobsList />
       </Container>
     </>
