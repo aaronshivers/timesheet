@@ -4,7 +4,7 @@ import Navigation from './Navigation'
 import JobSummary from './JobSummary'
 import JobsList from './JobsList'
 
-const App = () => (
+const TimesheetApp = () => (
   <>
     <Navigation />
     <JobSummary />
@@ -12,4 +12,4 @@ const App = () => (
   </>
 )
 
-export default App
+export default TimesheetApp

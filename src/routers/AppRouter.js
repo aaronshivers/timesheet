@@ -3,7 +3,7 @@ import { Router, Route } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import Context from '../context/context'
 import jobsReducer from '../reducers/jobs'
-import App from '../components/App'
+import TimesheetApp from '../components/TimesheetApp'
 import NewJobPage from '../components/NewJobPage'
 import EditJobPage from '../components/EditJobPage'
 
@@ -16,7 +16,7 @@ const AppRouter = ({ uid }) => {
   return (
     <Context.Provider value={ { uid, state, dispatch } }>
       <Router history={ history }>
-        <Route path="/" exact component={ App } />
+        <Route path="/" exact component={ TimesheetApp } />
         <Route path="/newjob" component={ NewJobPage } />
         <Route path="/editjob/:id" component={ EditJobPage } />
       </Router>
