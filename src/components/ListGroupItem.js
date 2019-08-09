@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Row, Col } from 'react-bootstrap'
 
 const ListGroupItem = ({ id, customer, description, hoursWorked }) => (
-  
+
   <ListGroup.Item key={ id }>
     <Link
       to={ {
@@ -11,11 +11,21 @@ const ListGroupItem = ({ id, customer, description, hoursWorked }) => (
         state: { id }
       } }
     >
-      <h5>Customer: { customer }</h5>
-      <h6>Job Description: { description }</h6>
-      <span className="text-break align-middle">
-        Hours Worked: { hoursWorked }
-      </span>
+      <Row>
+        <Col className="border-bottom border-light">
+          <span>Customer:</span> <span className="text-break">{ customer }</span>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="border-bottom border-light">
+          <span>Job Description:</span> <span className="text-break">{ description }</span>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="border-bottom border-light">
+          <span>Hours Worked:</span> <span>{ hoursWorked }</span>
+        </Col>
+      </Row>
     </Link>
   </ListGroup.Item>
 )
