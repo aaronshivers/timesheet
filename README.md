@@ -1,4 +1,4 @@
-# timesheet-v2
+# timesheet
 
 An application for trackting time spent working on jobs.
 
