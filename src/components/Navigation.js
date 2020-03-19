@@ -4,7 +4,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap'
 import Context from '../context/context'
 import LoginLogoutButton from './LoginLogoutButton'
 
-const Navigation = () =>{
+const Navigation = () => {
   const { uid } = useContext(Context)
 
   return (
