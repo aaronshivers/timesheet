@@ -44,7 +44,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css'
     }),
-    new Dotenv()
+    process.env.NODE_ENV !== 'production' ? new Dotenv() : null
   ],
   devtool: 'inline-source-map',
   devServer: {
